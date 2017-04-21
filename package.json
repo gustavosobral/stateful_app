@@ -31,6 +31,7 @@
   "dependencies": {
     "angular": "^1.5.11",
     "angular-cookie": "^4.1.0",
+    "angular-local-storage": "^0.5.2",
     "angular-ui-router": "^0.4.2",
     "ng-token-auth": "0.0.29"
   }

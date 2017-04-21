@@ -1,4 +1,4 @@
-function HomeController() {
+function HomeController(CurrentUserService) {
 }
 
 module.exports =  HomeController;

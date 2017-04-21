@@ -5,11 +5,12 @@ var tokenAuth = require('ng-token-auth');
 
 require('assets/scss/base.scss');
 
-var login = require('login');
-var home  = require('home');
+var login     = require('login');
+var home      = require('home');
+var services  = require('services');
 
 var app = angular.module('statefulApp', [
-  login, home, uiRouter, ipCookie, tokenAuth
+  login, home, services, uiRouter, ipCookie, tokenAuth
 ]);
 
 app.config(function($authProvider) {

@@ -1,10 +1,8 @@
 var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
-var ipCookie  = require('angular-cookie');
-var tokenAuth = require('ng-token-auth');
 
 var login = angular.module('statefulApp.login', [
-  uiRouter, ipCookie, tokenAuth
+  uiRouter
 ]);
 
 var LoginController = require('./login.controller.js');
