@@ -1,8 +1,10 @@
 var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
+var ipCookie  = require('angular-cookie');
+var tokenAuth = require('ng-token-auth');
 
 var login = angular.module('statefulApp.login', [
-  uiRouter
+  uiRouter, ipCookie, tokenAuth
 ]);
 
 var LoginController = require('./login.controller.js');
@@ -15,7 +17,7 @@ var loginTemplate = require('./login.template.html');
 function Routes($stateProvider) {
    $stateProvider
     .state('login', {
-      url: '/',
+      url: '/login',
       templateUrl: loginTemplate,
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
