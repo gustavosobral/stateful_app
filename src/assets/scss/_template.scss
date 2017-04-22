@@ -1,0 +1,12 @@
+.template {
+  &__menu {
+    &--main {
+      font-weight: bold;
+    }
+
+    &--items {
+      padding-left: 30px;
+      span { margin-right: 5px; }
+    }
+  }
+}

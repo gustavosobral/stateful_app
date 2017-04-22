@@ -6,13 +6,13 @@ var tokenAuth = require('ng-token-auth');
 require('assets/scss/base.scss');
 
 var login     = require('login');
-var home      = require('home');
+var models    = require('models');
 var services  = require('services');
 
 var navbar = require('components/navbar');
 
 var app = angular.module('statefulApp', [
-  login, home, services, navbar, uiRouter, ipCookie, tokenAuth
+  login, models, services, navbar, uiRouter, ipCookie, tokenAuth
 ]);
 
 app.config(function($authProvider) {
@@ -39,7 +39,7 @@ function Routes($stateProvider, $urlRouterProvider) {
       controller: function($state, $auth) {
         $auth.validateUser()
           .then(function(resp) {
-            $state.go('layout.home');
+            $state.go('layout.models.list');
           })
           .catch(function(resp) {
             $state.go('login');
