@@ -12,7 +12,11 @@
           <div class="form-group models__form--buttons">
             <a ui-sref="layout.models.list" class="btn btn-danger">Cancel</a>
             <input type="submit" value="Create" class="btn btn-success"
-                   ng-click="modelsFormCtrl.saveModel()">
+                   ng-if="!modelsFormCtrl.model.id"
+                   ng-click="modelsFormCtrl.createModel()">
+            <input type="submit" value="Update" class="btn btn-success"
+                   ng-if="modelsFormCtrl.model.id"
+                   ng-click="modelsFormCtrl.updateModel()">
           </div>
         </form>
       </div>

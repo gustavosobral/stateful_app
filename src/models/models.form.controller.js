@@ -1,20 +1,13 @@
 function ModelsController($state, $stateParams, ModelsService) {
   var vm = this;
-  vm.saveModel = saveModel;
+  vm.createModel = createModel;
+  vm.updateModel = updateModel;
 
   function loadModel(id) {
     ModelsService.get(id)
       .then(function(response) {
         vm.model = response;
       });
-  }
-
-  function saveModel() {
-    if(vm.model.id){
-      updateModel();
-    } else {
-      createModel();
-    }
   }
 
   function createModel() {
