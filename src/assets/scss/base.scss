@@ -1,7 +1,8 @@
 @import 'variables';
 
+@import 'components/navbar/base';
 @import 'login/base';
 
 body {
-  background: $grey;
+  background: $light-grey;
 }

@@ -9,8 +9,10 @@ var login     = require('login');
 var home      = require('home');
 var services  = require('services');
 
+var navbar = require('components/navbar');
+
 var app = angular.module('statefulApp', [
-  login, home, services, uiRouter, ipCookie, tokenAuth
+  login, home, services, navbar, uiRouter, ipCookie, tokenAuth
 ]);
 
 app.config(function($authProvider) {
