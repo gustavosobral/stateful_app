@@ -5,8 +5,15 @@ var models = angular.module('statefulApp.models', [
   uiRouter
 ]);
 
-var ModelsController = require('./models.controller.js');
-models.controller('ModelsController', ModelsController);
+var ModelsListController = require('./models.list.controller.js');
+models.controller('ModelsListController', ModelsListController);
+
+var ModelsFormController = require('./models.form.controller.js');
+models.controller('ModelsFormController', ModelsFormController);
+
+
+var ModelsService = require('./models.service.js');
+models.factory('ModelsService', ModelsService);
 
 models.config(Routes);
 
@@ -27,16 +34,16 @@ function Routes($stateProvider) {
       }
     })
     .state('layout.models.form', {
-      url: '/models/form',
+      url: '/models/form/:id',
       templateUrl: modelsFormTemplate,
-      controller: 'ModelsController',
-      controllerAs: 'modelsCtrl'
+      controller: 'ModelsFormController',
+      controllerAs: 'modelsFormCtrl'
     })
     .state('layout.models.list', {
       url: '/models/list',
       templateUrl: modelsListTemplate,
-      controller: 'ModelsController',
-      controllerAs: 'modelsCtrl'
+      controller: 'ModelsListController',
+      controllerAs: 'modelsListCtrl'
     });
 }
 
