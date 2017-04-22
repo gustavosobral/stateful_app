@@ -1,0 +1,10 @@
+.menu {
+  &__main {
+    font-weight: bold;
+  }
+
+  &__items {
+    padding-left: 30px;
+    span { margin-right: 5px; }
+  }
+}
