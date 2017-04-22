@@ -1,0 +1,17 @@
+.models {
+  &__list {
+    &--header {
+      background-color: #337ab7 !important;
+      border-color: #337ab7 !important;
+    }
+
+    &--table {
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .btn, span { margin: 0 10px; }
+      }
+    }
+  }
+}

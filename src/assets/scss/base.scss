@@ -1,7 +1,15 @@
 @import 'variables';
 
+@import 'components/menu/base';
+@import 'components/navbar/base';
+
 @import 'login/base';
+@import 'models/base';
 
 body {
-  background: $grey;
+  background: $light-grey;
+}
+
+menu {
+  margin: 0;
 }

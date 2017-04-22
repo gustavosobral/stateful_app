@@ -5,7 +5,7 @@ function LoginController($auth, $state, CurrentUserService) {
     $auth.submitLogin(form)
       .then(function(response) {
         CurrentUserService.setCurrentUser(response);
-        $state.go('layout.home');
+        $state.go('layout.models.list');
       })
       .catch(function(response) {
         console.log('Error: ' + response.reason);

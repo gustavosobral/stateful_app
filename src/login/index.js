@@ -1,8 +1,10 @@
 var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
 
+var models    = require('models');
+
 var login = angular.module('statefulApp.login', [
-  uiRouter
+  uiRouter, models
 ]);
 
 var LoginController = require('./login.controller.js');

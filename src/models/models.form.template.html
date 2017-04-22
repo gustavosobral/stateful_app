@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default models__form">
+      <div class="panel-heading models__form--header"></div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label>Name:</label>
+            <input placeholder="Name" class="form-control" type="text"
+                   ng-model="modelsFormCtrl.model.name">
+          </div>
+          <div class="form-group models__form--buttons">
+            <a ui-sref="layout.models.list" class="btn btn-danger">Cancel</a>
+            <input type="submit" value="Create" class="btn btn-success"
+                   ng-if="!modelsFormCtrl.model.id"
+                   ng-click="modelsFormCtrl.createModel()">
+            <input type="submit" value="Update" class="btn btn-success"
+                   ng-if="modelsFormCtrl.model.id"
+                   ng-click="modelsFormCtrl.updateModel()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
