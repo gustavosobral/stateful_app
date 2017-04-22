@@ -1,0 +1,16 @@
+.states {
+  &__list {
+    &--item {
+      padding: 8px 10px;
+      border-radius: 5px;
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        h5 { margin: 3px 0 0 10px; }
+      }
+      .exclude { padding: 0 6px; }
+    }
+  }
+}

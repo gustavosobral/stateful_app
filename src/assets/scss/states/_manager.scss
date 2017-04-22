@@ -1,0 +1,15 @@
+.states {
+  &__manager {
+    &--header {
+      padding: 2px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    &--buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+  }
+}

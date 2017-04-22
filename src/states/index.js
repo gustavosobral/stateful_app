@@ -1,14 +1,17 @@
 var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
 
-var login = angular.module('statefulApp.states', [
+var states = angular.module('statefulApp.states', [
   uiRouter
 ]);
 
 var StatesListController = require('./states.list.controller.js');
-login.controller('StatesListController', StatesListController);
+states.controller('StatesListController', StatesListController);
 
-login.config(Routes);
+var StatesService = require('./states.service.js');
+states.factory('StatesService', StatesService);
+
+states.config(Routes);
 
 var statesTemplate     = require('./states.template.html');
 var statesListTemplate = require('./states.list.template.html');
@@ -33,4 +36,4 @@ function Routes($stateProvider) {
     });
 }
 
-module.exports = login.name;
+module.exports = states.name;

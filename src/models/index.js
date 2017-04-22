@@ -13,7 +13,6 @@ models.controller('ModelsListController', ModelsListController);
 var ModelsFormController = require('./models.form.controller.js');
 models.controller('ModelsFormController', ModelsFormController);
 
-
 var ModelsService = require('./models.service.js');
 models.factory('ModelsService', ModelsService);
 
