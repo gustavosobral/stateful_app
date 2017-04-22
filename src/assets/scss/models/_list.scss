@@ -1,8 +1,9 @@
 .models {
   &__list {
     &--header {
-      background-color: #337ab7 !important;
-      border-color: #337ab7 !important;
+      padding: 2px;
+      text-align: center;
+      font-weight: bold;
     }
 
     &--table {

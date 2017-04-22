@@ -1,11 +1,12 @@
-function StatesListController($stateParams, StatesService, CurrentUserService) {
+function StatesListController($stateParams, ModelsService, CurrentUserService) {
   var vm = this;
   vm.removeState = removeState;
 
-  function loadStates(modelId) {
-    StatesService.get(modelId)
+  function loadData(modelId) {
+    ModelsService.get(modelId)
       .then(function(response) {
-        vm.states = response;
+        vm.model = response;
+        vm.states = vm.model.states;
       });
   }
 
@@ -15,7 +16,7 @@ function StatesListController($stateParams, StatesService, CurrentUserService) {
 
   function activate() {
     vm.currentUser = CurrentUserService.getCurrentUser();
-    loadStates($stateParams.id);
+    loadData($stateParams.id);
   }
 
   activate();
