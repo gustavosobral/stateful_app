@@ -13,4 +13,4 @@ function LoginController($auth, $state, CurrentUserService) {
   };
 }
 
-module.exports =  LoginController;
+module.exports = LoginController;

@@ -1,8 +1,10 @@
-var angular      = require('angular');
+var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
 
+var states = require('states');
+
 var models = angular.module('statefulApp.models', [
-  uiRouter
+  uiRouter, states
 ]);
 
 var ModelsListController = require('./models.list.controller.js');
@@ -34,13 +36,13 @@ function Routes($stateProvider) {
       }
     })
     .state('layout.models.form', {
-      url: '/models/form/:id',
+      url: '/form/:id',
       templateUrl: modelsFormTemplate,
       controller: 'ModelsFormController',
       controllerAs: 'modelsFormCtrl'
     })
     .state('layout.models.list', {
-      url: '/models/list',
+      url: '/list',
       templateUrl: modelsListTemplate,
       controller: 'ModelsListController',
       controllerAs: 'modelsListCtrl'
