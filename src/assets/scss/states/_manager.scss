@@ -1,5 +1,5 @@
-.models {
-  &__form {
+.states {
+  &__manager {
     &--header {
       padding: 2px;
       text-align: center;
@@ -8,9 +8,8 @@
 
     &--buttons {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      .btn { margin: 0 10px; }
+      justify-content: space-between;
+      margin-bottom: 15px;
     }
   }
 }

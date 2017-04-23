@@ -2,6 +2,8 @@ var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
 var ipCookie  = require('angular-cookie');
 var tokenAuth = require('ng-token-auth');
+var sortable  = require('ng-sortable');
+var dialog    = require('ng-dialog');
 
 require('assets/scss/base.scss');
 
@@ -14,7 +16,7 @@ var navbar = require('components/navbar');
 
 var app = angular.module('statefulApp', [
   login, models, services, menu, navbar,
-  uiRouter, ipCookie, tokenAuth
+  uiRouter, ipCookie, tokenAuth, sortable, dialog
 ]);
 
 app.config(function($authProvider) {

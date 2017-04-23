@@ -1,5 +1,5 @@
 <div class="panel panel-default models__list">
-  <div class="panel-heading models__list--header"></div>
+  <div class="panel-heading models__list--header">List</div>
   <div class="panel-body">
     <div class="table-responsive">
       <table class="table table-striped models__list--table">
@@ -17,9 +17,11 @@
             <td>{{ model.id }}</td>
             <td>{{ model.name }}</td>
             <td class="actions">
-              <a class="btn btn-sm btn-success">States</a>
+              <a class="btn btn-sm btn-success"
+                 ui-sref="layout.states.list({ id: model.id })">
+                States</a>
               <a class="btn btn-sm btn-warning" ng-if="modelsListCtrl.currentUser.admin"
-                  ui-sref="layout.models.form({ id: model.id })">
+                 ui-sref="layout.models.form({ id: model.id })">
                  Edit</a>
               <a class="btn btn-sm btn-danger" ng-if="modelsListCtrl.currentUser.admin"
                  ng-click="modelsListCtrl.destroyModel(model.id)">Destroy</a>

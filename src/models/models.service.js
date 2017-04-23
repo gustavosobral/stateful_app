@@ -1,10 +1,11 @@
 function ModelsService($http, $q, $auth) {
   return {
-    get: get,
-    getAll: getAll,
-    create: create,
-    update: update,
-    destroy: destroy
+    get:       get,
+    getAll:    getAll,
+    create:    create,
+    update:    update,
+    destroy:   destroy,
+    walkState: walkState
   };
 
   function get(id) {
@@ -79,6 +80,20 @@ function ModelsService($http, $q, $auth) {
         defer.resolve();
       })
       .catch(function(response) {
+        defer.reject(response);
+      });
+
+    return defer.promise;
+  }
+
+  function walkState(id) {
+    var defer = $q.defer();
+
+    $http.post($auth.apiUrl() + '/models/' + id + '/walk_state')
+      .then(function(response) {
+        defer.resolve(response.data);
+      })
+      .catch(function(response, code) {
         defer.reject(response);
       });
 

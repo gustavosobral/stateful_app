@@ -1,0 +1,188 @@
+/* ************************************** */
+/* Mandatory CSS required for ng-dialog   */
+/* ************************************** */
+
+@-webkit-keyframes ngdialog-fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ngdialog-fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes ngdialog-fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ngdialog-fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.ngdialog {
+  box-sizing: border-box;
+}
+
+.ngdialog *,
+.ngdialog *:before,
+.ngdialog *:after {
+  box-sizing: inherit;
+}
+
+.ngdialog {
+  position: fixed;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ngdialog.ngdialog-disabled-animation,
+.ngdialog.ngdialog-disabled-animation .ngdialog-overlay,
+.ngdialog.ngdialog-disabled-animation .ngdialog-content {
+  -webkit-animation: none!important;
+  animation: none!important;
+}
+
+.ngdialog-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-animation: ngdialog-fadein 0.5s;
+  animation: ngdialog-fadein 0.5s;
+}
+
+.ngdialog-no-overlay {
+  pointer-events: none;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-overlay {
+  -webkit-backface-visibility: hidden;
+  -webkit-animation: ngdialog-fadeout 0.5s;
+  animation: ngdialog-fadeout 0.5s;
+}
+
+.ngdialog-content {
+  background: white;
+  -webkit-backface-visibility: hidden;
+  -webkit-animation: ngdialog-fadein 0.5s;
+  animation: ngdialog-fadein 0.5s;
+  pointer-events: all;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-content {
+  -webkit-backface-visibility: hidden;
+  -webkit-animation: ngdialog-fadeout 0.5s;
+  animation: ngdialog-fadeout 0.5s;
+}
+
+.ngdialog-close:before {
+  font-family: 'Helvetica', Arial, sans-serif;
+  content: '\00D7';
+  cursor: pointer;
+}
+
+html.ngdialog-open,
+body.ngdialog-open {
+  overflow: hidden;
+}
+
+/* ************************************** */
+/* My CSS for ng-dialog                   */
+/* ************************************** */
+
+.states {
+  &__dialog {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    .ngdialog-content {
+      -webkit-animation: ngdialog-flyin .5s;
+      animation: ngdialog-flyin .5s;
+      border-radius: 5px;
+      margin: 0 auto;
+      max-width: 95%;
+      padding: 1em;
+      position: relative;
+    }
+
+    .ngdialog-close {
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      &::before {
+        background: 0 0;
+        border-radius: 3px;
+        color: #bbb;
+        content: '\00D7';
+        font-size: 26px;
+        font-weight: 400;
+        height: 30px;
+        line-height: 26px;
+        position: absolute;
+        right: 3px;
+        text-align: center;
+        top: 3px;
+        width: 30px;
+      }
+    }
+
+    &__content {
+      padding: 0 5px;
+
+      h3 {
+        margin: 0 0 15px 0;
+        font-weight: bold;
+      }
+
+      .fields {
+        margin: 20px 0;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        .btn { margin: 0 10px; }
+      }
+    }
+  }
+} 

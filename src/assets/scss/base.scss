@@ -1,10 +1,12 @@
 @import 'variables';
+@import 'sortable';
 
 @import 'components/menu/base';
 @import 'components/navbar/base';
 
 @import 'login/base';
 @import 'models/base';
+@import 'states/base';
 
 body {
   background: $light-grey;
@@ -13,3 +15,5 @@ body {
 menu {
   margin: 0;
 }
+
+.table>thead>tr>th { border: 0; }

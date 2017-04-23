@@ -1,0 +1,39 @@
+.states {
+  &__display {
+    &--header {
+      height: 25px;
+    }
+
+    &--content {
+      .headline {
+        text-align: center;
+        margin: 0 50px 10px 50px;
+        font-weight: bold;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $grey;
+      }
+
+      .state {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        padding: 0 50px;
+        p { margin: 0; }
+      }
+
+      .current-state {
+        font-weight: bold;
+        p { font-size: 16px; }
+      }
+
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid $grey;
+        margin: 0 50px;
+        padding-top: 20px;
+      }
+    }
+  }
+}

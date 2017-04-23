@@ -1,0 +1,21 @@
+.states {
+  &__template {
+    &--header {
+      border-radius: 5px;
+      padding: 10px 15px;
+      background-color: #fff;
+      border: 1px solid $bs-grey;
+      margin-bottom: 20px;
+
+      h3 {
+        font-weight: bold;
+        margin: 0;
+      }  
+    }   
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
