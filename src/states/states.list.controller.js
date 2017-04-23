@@ -1,6 +1,6 @@
 var stateDialogTemplate = require('./state.dialog.template.html');
 
-function StatesListController($stateParams, ModelsService, StatesService,
+function StatesListController($scope, $stateParams, ModelsService, StatesService,
                               CurrentUserService, ngDialog) {
   var vm = this;
   vm.updateStates = updateStates;
@@ -31,6 +31,12 @@ function StatesListController($stateParams, ModelsService, StatesService,
       });
   }
 
+  function findState(stateId) {
+    return function(element) {
+      return element.id === stateId;
+    }
+  }
+
   function removeState(index) {
     vm.states.splice(index, 1);
   }
@@ -39,12 +45,31 @@ function StatesListController($stateParams, ModelsService, StatesService,
     vm.states.push({ id: null, order: null, name: stateName });
   }
 
-  function openDialog() {
+  function editState(state) {
+    s = vm.states.find(findState(state.id));
+    s.name = state.name;
+  }
+
+  function openDialog(state) {
+    if(state) {
+      $scope.editState = { id: state.id, name: state.name };
+    } else {
+      $scope.editState = {};
+    }
+
     ngDialog.open({ templateUrl: stateDialogTemplate,
                     className: 'states__dialog',
+                    closeByEscape: false,
+                    closeByNavigation: false,
+                    closeByDocument: false,
+                    scope: $scope,
                     preCloseCallback: function(value) {
-                      if(value && value != '$document' && value !='$closeButton') {
-                        addState(value);
+                      if(value && value !='$closeButton') {
+                        if(value.id) {
+                          editState(value);
+                        } else {
+                          addState(value.name);
+                        }
                       }
                     }
     });

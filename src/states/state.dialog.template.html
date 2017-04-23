@@ -1,13 +1,18 @@
 <div class="states__dialog__content">
-  <h3>New state</h3>
+  <h3 ng-if="editState.id">Edit state</h3>
+  <h3 ng-if="!editState.id">New state</h3>
   <form>
     <div class="form-group fields">
-      <input placeholder="Name" class="form-control" type="text" ng-model="newStateName">
+      <input placeholder="Name" class="form-control" type="text" ng-model="editState.name">
     </div>
     <div class="form-group buttons">
       <a class="btn btn-danger" ng-click="closeThisDialog()">Cancel</a>
+      <input type="submit" value="Update" class="btn btn-success"
+             ng-if="editState.id"
+             ng-click="closeThisDialog(editState)">
       <input type="submit" value="Add" class="btn btn-success"
-             ng-click="closeThisDialog(newStateName)">
+             ng-if="!editState.id"
+             ng-click="closeThisDialog(editState)">
     </div>
   </form>
 </div>

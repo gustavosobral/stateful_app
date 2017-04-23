@@ -11,7 +11,7 @@ var login     = require('login');
 var models    = require('models');
 var services  = require('services');
 
-var menu  = require('components/menu');
+var menu   = require('components/menu');
 var navbar = require('components/navbar');
 
 var app = angular.module('statefulApp', [
