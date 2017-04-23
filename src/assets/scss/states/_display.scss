@@ -13,12 +13,17 @@
         border-bottom: 1px solid $grey;
       }
 
-      .current-state,
-      .next-state {
+      .state {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         margin: 20px 0;
+        padding: 0 50px;
         p { margin: 0; }
+      }
+
+      .current-state {
+        font-weight: bold;
+        p { font-size: 16px; }
       }
 
       .button {

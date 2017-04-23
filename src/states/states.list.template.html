@@ -4,16 +4,35 @@
       <div class="panel-heading states__display--header"></div>
       <div class="panel-body states__display--content">
         <h3 class="headline">{{ statesListCtrl.model.name }}</h3>
-        <div class="current-state">
-          <p>Current state: </p>
-          <p><b>{{ statesListCtrl.model.states[statesListCtrl.model.current_state].name }}</b></p>
+        <div class="state">
+          <p>Previous state: </p>
+          <p ng-if="!statesListCtrl.states[statesListCtrl.model.current_state - 1].name">
+            ---
+          </p>
+          <p ng-if="statesListCtrl.states[statesListCtrl.model.current_state - 1].name">
+            {{ statesListCtrl.states[statesListCtrl.model.current_state - 1].name }}
+          </p>
         </div>
-        <div class="next-state">
+        <div class="state current-state">
+          <p>Current state: </p>
+          <p ng-if="!statesListCtrl.states[statesListCtrl.model.current_state].name">
+            <b>---</b>
+          </p>
+          <p ng-if="statesListCtrl.states[statesListCtrl.model.current_state].name">
+            <b>{{ statesListCtrl.states[statesListCtrl.model.current_state].name }}</b>
+          </p>
+        </div>
+        <div class="state">
           <p>Next state: </p>
-          <p><b>{{ statesListCtrl.model.states[statesListCtrl.model.current_state + 1].name }}</b></p>
+          <p ng-if="!statesListCtrl.states[statesListCtrl.model.current_state + 1].name">
+            ---
+          </p>
+          <p ng-if="statesListCtrl.states[statesListCtrl.model.current_state + 1].name">
+            {{ statesListCtrl.states[statesListCtrl.model.current_state + 1].name }}
+          </p>
         </div>
         <div class="button">
-          <a class="btn btn-success">Next state</a>
+          <a class="btn btn-success" ng-click="statesListCtrl.modelWalkState()">Next state</a>
         </div>
       </div>
     </div>
@@ -24,7 +43,7 @@
       <div class="panel-heading states__manager--header">Manager</div>
       <div class="panel-body">
         <div class="states__manager--buttons">
-          <a class="btn btn-warning">Save</a>
+          <a class="btn btn-warning" ng-click="statesListCtrl.updateStates()">Save</a>
           <a class="btn btn-success" ng-click="statesListCtrl.openDialog()">Add state</a>
         </div>
         <ul class="list-group states__list" data-as-sortable data-ng-model="statesListCtrl.states">
