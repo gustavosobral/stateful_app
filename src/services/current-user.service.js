@@ -1,8 +1,9 @@
-function CurrentUserService(localStorageService) {
+function CurrentUserService($q, localStorageService) {
   return {
     setCurrentUser:     setCurrentUser,
     destroyCurrentUser: destroyCurrentUser,
-    getCurrentUser:     getCurrentUser
+    getCurrentUser:     getCurrentUser,
+    isAdmin:            isAdmin
   };
 
   function setCurrentUser(data) {
@@ -20,6 +21,19 @@ function CurrentUserService(localStorageService) {
 
   function getCurrentUser() {
     return localStorageService.get('currentUser');
+  }
+
+  function isAdmin() {
+    var defer = $q.defer();
+    var currentUser = getCurrentUser();
+
+    if(currentUser.admin) {
+      defer.resolve();
+    } else {
+      defer.reject();
+    }
+
+    return defer.promise;
   }
 }
 

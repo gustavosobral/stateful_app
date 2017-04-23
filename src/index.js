@@ -23,7 +23,7 @@ var app = angular.module('statefulApp', [
 
 app.config(function($authProvider, localStorageServiceProvider, FlashProvider) {
   $authProvider.configure({
-    apiUrl:  'http://localhost:3000/v1',
+    apiUrl:  'https://stateful-api.herokuapp.com/v1',
     storage: 'localStorage'
   });
 

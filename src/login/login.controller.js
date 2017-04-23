@@ -5,6 +5,7 @@ function LoginController($auth, $state, CurrentUserService, Flash) {
     $auth.submitLogin(form)
       .then(function(response) {
         CurrentUserService.setCurrentUser(response);
+        Flash.create('success', 'Logged in successfully.');
         $state.go('layout.models.list');
       })
       .catch(function(response) {

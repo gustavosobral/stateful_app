@@ -38,7 +38,12 @@ function Routes($stateProvider) {
       url: '/form/:id',
       templateUrl: modelsFormTemplate,
       controller: 'ModelsFormController',
-      controllerAs: 'modelsFormCtrl'
+      controllerAs: 'modelsFormCtrl',
+      resolve: {
+        admin: function(CurrentUserService) {
+          return CurrentUserService.isAdmin();
+        }
+      }
     })
     .state('layout.models.list', {
       url: '/list',
