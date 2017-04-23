@@ -1,7 +1,7 @@
 var stateDialogTemplate = require('./state.dialog.template.html');
 
-function StatesListController($stateParams, ModelsService, StatesService,
-                              CurrentUserService, ngDialog) {
+function StatesListController($scope, $stateParams, ModelsService, StatesService,
+                              CurrentUserService, ngDialog, Flash) {
   var vm = this;
   vm.updateStates = updateStates;
   vm.modelWalkState = modelWalkState;
@@ -19,7 +19,11 @@ function StatesListController($stateParams, ModelsService, StatesService,
   function updateStates() {
     StatesService.update(vm.modelId, vm.states)
       .then(function(response) {
+        Flash.create('success', 'States was successfully saved.');
         activate();
+      })
+      .catch(function(response) {
+        Flash.create('danger', 'States could not be saved.');
       });
   }
 
@@ -28,7 +32,17 @@ function StatesListController($stateParams, ModelsService, StatesService,
       .then(function(response) {
         vm.model = response;
         vm.states = vm.model.states;
+        Flash.create('success', 'Model successfully moved to next state.');
+      })
+      .catch(function(response) {
+        Flash.create('danger', 'Model could not be moved to next state.');
       });
+  }
+
+  function findState(stateId) {
+    return function(element) {
+      return element.id === stateId;
+    }
   }
 
   function removeState(index) {
@@ -39,12 +53,31 @@ function StatesListController($stateParams, ModelsService, StatesService,
     vm.states.push({ id: null, order: null, name: stateName });
   }
 
-  function openDialog() {
+  function editState(state) {
+    s = vm.states.find(findState(state.id));
+    s.name = state.name;
+  }
+
+  function openDialog(state) {
+    if(state) {
+      $scope.editState = { id: state.id, name: state.name };
+    } else {
+      $scope.editState = {};
+    }
+
     ngDialog.open({ templateUrl: stateDialogTemplate,
                     className: 'states__dialog',
+                    closeByEscape: false,
+                    closeByNavigation: false,
+                    closeByDocument: false,
+                    scope: $scope,
                     preCloseCallback: function(value) {
-                      if(value && value != '$document' && value !='$closeButton') {
-                        addState(value);
+                      if(value && value !='$closeButton') {
+                        if(value.id) {
+                          editState(value);
+                        } else {
+                          addState(value.name);
+                        }
                       }
                     }
     });

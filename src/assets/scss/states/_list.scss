@@ -10,6 +10,12 @@
         justify-content: flex-start;
         h5 { margin: 3px 0 0 10px; }
       }
+      .buttons { 
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .edit,
       .exclude { padding: 0 6px; }
     }
   }

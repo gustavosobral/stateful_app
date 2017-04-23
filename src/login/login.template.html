@@ -1,8 +1,16 @@
+<div class="login__logo">
+  <h1>Stateful App</h1>
+</div>
+
+<div class="login__alert">
+  <flash-message></flash-message>
+</div>
+
 <div class="login">
   <div class="login__card">
     <div class="login__card--header">
       <h2>Login</h2>
-    </div>    
+    </div>
     <form ng-init="loginForm = {}">
       <div class="login__card--fields">
         <div class="form-group">
@@ -15,8 +23,8 @@
         </div>
       </div>
       <div class=login__card--button>
-        <button type="submit" class="btn btn-success" ng-click="loginCtrl.submitLogin(loginForm)">Sign in</button>  
-      </div>      
+        <button type="submit" class="btn btn-success" ng-click="loginCtrl.submitLogin(loginForm)">Sign in</button>
+      </div>
     </form>
   </div>
 </div>
