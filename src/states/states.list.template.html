@@ -25,7 +25,7 @@
       <div class="panel-body">
         <div class="states__manager--buttons">
           <a class="btn btn-warning">Save</a>
-          <a class="btn btn-success">Add state</a>
+          <a class="btn btn-success" ng-click="statesListCtrl.openDialog()">Add state</a>
         </div>
         <ul class="list-group states__list" data-as-sortable data-ng-model="statesListCtrl.states">
           <li class="list-group-item states__list--item" data-as-sortable-item

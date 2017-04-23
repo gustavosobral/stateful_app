@@ -1,0 +1,13 @@
+<div class="states__dialog__content">
+  <h3>New state</h3>
+  <form>
+    <div class="form-group fields">
+      <input placeholder="Name" class="form-control" type="text" ng-model="newStateName">
+    </div>
+    <div class="form-group buttons">
+      <a class="btn btn-danger" ng-click="closeThisDialog()">Cancel</a>
+      <input type="submit" value="Add" class="btn btn-success"
+             ng-click="closeThisDialog(newStateName)">
+    </div>
+  </form>
+</div>

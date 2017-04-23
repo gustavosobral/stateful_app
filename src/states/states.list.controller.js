@@ -1,5 +1,8 @@
-function StatesListController($stateParams, ModelsService, CurrentUserService) {
+var stateDialogTemplate = require('./state.dialog.template.html');
+
+function StatesListController($stateParams, ModelsService, CurrentUserService, ngDialog) {
   var vm = this;
+  vm.openDialog = openDialog;
   vm.removeState = removeState;
 
   function loadData(modelId) {
@@ -8,6 +11,21 @@ function StatesListController($stateParams, ModelsService, CurrentUserService) {
         vm.model = response;
         vm.states = vm.model.states;
       });
+  }
+
+  function openDialog() {
+    ngDialog.open({ templateUrl: stateDialogTemplate,
+                    className: 'states__dialog',
+                    preCloseCallback: function(value) {
+                      if(value && value != '$document' && value !='$closeButton') {
+                        addState(value);  
+                      }
+                    }
+    });
+  }
+
+  function addState(stateName) {
+    vm.states.push({ id: null, order: null, name: stateName });
   }
 
   function removeState(index) {
