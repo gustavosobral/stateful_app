@@ -1,4 +1,4 @@
-function ModelsListController(ModelsService, CurrentUserService) {
+function ModelsListController(ModelsService, CurrentUserService, Flash) {
   var vm = this;
   vm.destroyModel = destroyModel;
 
@@ -14,7 +14,11 @@ function ModelsListController(ModelsService, CurrentUserService) {
     if (window.confirm(message)) {
       ModelsService.destroy(id)
         .then(function(response) {
+          Flash.create('success', 'Model was successfully destroyed.');
           loadModels();
+        })
+        .catch(function(response) {
+          Flash.create('danger', 'Model could not be destroyed.');
         });
     }
   }

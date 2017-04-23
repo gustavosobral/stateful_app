@@ -1,7 +1,7 @@
 var stateDialogTemplate = require('./state.dialog.template.html');
 
 function StatesListController($scope, $stateParams, ModelsService, StatesService,
-                              CurrentUserService, ngDialog) {
+                              CurrentUserService, ngDialog, Flash) {
   var vm = this;
   vm.updateStates = updateStates;
   vm.modelWalkState = modelWalkState;
@@ -19,7 +19,11 @@ function StatesListController($scope, $stateParams, ModelsService, StatesService
   function updateStates() {
     StatesService.update(vm.modelId, vm.states)
       .then(function(response) {
+        Flash.create('success', 'States was successfully saved.');
         activate();
+      })
+      .catch(function(response) {
+        Flash.create('danger', 'States could not be saved.');
       });
   }
 
@@ -28,6 +32,10 @@ function StatesListController($scope, $stateParams, ModelsService, StatesService
       .then(function(response) {
         vm.model = response;
         vm.states = vm.model.states;
+        Flash.create('success', 'Model successfully moved to next state.');
+      })
+      .catch(function(response) {
+        Flash.create('danger', 'Model could not be moved to next state.');
       });
   }
 

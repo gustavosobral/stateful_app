@@ -1,4 +1,4 @@
-function LoginController($auth, $state, CurrentUserService) {
+function LoginController($auth, $state, CurrentUserService, Flash) {
   var vm = this;
 
   vm.submitLogin = function(form) {
@@ -8,6 +8,7 @@ function LoginController($auth, $state, CurrentUserService) {
         $state.go('layout.models.list');
       })
       .catch(function(response) {
+        Flash.create('danger', 'Incorrect email or password.');
         console.log('Error: ' + response.reason);
       });
   };

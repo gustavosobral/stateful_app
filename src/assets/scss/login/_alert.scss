@@ -1,0 +1,9 @@
+.login {
+  &__alert {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    .alert { margin: 10px; }
+  }
+}
